@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Wallonia Taco Cloud</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap-lumen.css}" />
+</head>
+<body>
+
+	<div class="container" align="center">
+		<h1>Order your taco creations now!</h1>
+		<img alt="WalloniaTaco_logo" th:src="@{/images/TacoCloud.png}" /> <span><a
+			th:href="@{/design}" id="another_taco"><b>Design another taco</b></a></span>
+		<!-- <br /> -->
+	</div>
+
+	<div class="container" align="center">
+		<form method="POST" th:action="@{/orders}" th:object="${order}">
+			<div th:if="${#fields.hasErrors()}">
+				<span class="validationError">Please correct the problems
+					below and resubmit</span>
+			</div>
+			<fieldset>
+				<legend>Deliver my taco masterpieces to...</legend>
+				<div class="form-group">
+					<!-- <h3>Deliver my taco masterpieces to...</h3> -->
+					<table>
+						<tr>
+							<td><label for="name">Name: </label></td>
+							<td><input class="form-control" type="text"
+								th:field="*{name}"> <span class="validationError"
+								th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
+									Error</span></td>
+						</tr>
+						<tr>
+							<td><label for="street">Street address: </label></td>
+							<td><input class="form-control" type="text"
+								th:field="*{street}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('street')}" th:errors="*{street}">Street
+									Error</span></td>
+						</tr>
+						<tr>
+							<td><label for="city">City: </label></td>
+							<td><input class="form-control" type="text"
+								th:field="*{city}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City
+									Error</span></td>
+						</tr>
+						<tr>
+							<td><label for="region">Region: </label></td>
+							<td><input class="form-control" type="text"
+								th:field="*{region}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('region')}" th:errors="*{region}">Region
+									Error</span></td>
+						</tr>
+						<tr>
+							<td><label for="postalCode">Postal code: </label></td>
+							<td><input class="form-control" type="text"
+								th:field="*{postalCode}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('postalCode')}"
+								th:errors="*{postalCode}">Postal Code Error</span></td>
+						</tr>
+					</table>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<legend>Here's how I'll pay...</legend>
+				<div class="form-group">
+					<!-- <h3>Here's how I'll pay...</h3> -->
+					<table>
+						<tr>
+							<td><label for="creditCardNbr">Credit card #: </label></td>
+							<td><input class="form-control" type="text"
+								th:field="*{creditCardNbr}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('creditCardNbr')}"
+								th:errors="*{creditCardNbr}">Credit Card Number Error
+							</span></td>
+						</tr>
+						<tr>
+							<td><label for="creditCardExp">Expiration: </label></td>
+							<td><input class="form-control" type="text"
+								th:field="*{creditCardExp}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('creditCardExp')}"
+								th:errors="*{creditCardExp}">Credit Card Expiration Error</span>
+							</td>
+						</tr>
+						<tr>
+							<td><label for="creditCardCVV">CVV: </label></td>
+							<td><input class="form-control" type="text"
+								th:field="*{creditCardCVV}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('creditCardCVV')}"
+								th:errors="*{creditCardCVV}">Credit Card CVV Error</span></td>
+						</tr>
+					</table>
+				</div>
+			</fieldset>
+
+			<div class="submit">
+				<button class="btn btn-primary">Submit order</button>
+				<!-- <input type="submit" value="Submit order"/> -->
+			</div>
+		</form>
+	</div>
+</body>
+</html>
