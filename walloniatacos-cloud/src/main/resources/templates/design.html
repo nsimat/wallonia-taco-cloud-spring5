@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title><b>Design a Taco</b></title>
+<title>Design a Taco</title>
 <link rel="stylesheet" th:href="@{/styles.css}" />
 <link rel="stylesheet" th:href="@{/css/bootstrap-lumen.css}" />
 </head>
@@ -14,19 +14,20 @@
 	</div>
 
 	<div class="form-group" align="center">
-		<form method="POST" th:object="${design}">
+		<form method="POST" th:object="${taco}">
 			<fieldset>
 				<legend>Taco Designing</legend>
 				<span class="validationError"
 					th:if="${#fields.hasErrors('ingredients')}"
 					th:errors="*{ingredients}"> Ingredient Error </span>
+					
 				<div class="grid">
 					<div align="left" class="ingredient-group" id="wraps">
 						<h3>Designate your wrap:</h3>
 						<div th:each="ingredient : ${wrap}">
 							<table>
 								<tr>
-									<td><input name="ingredients" type="checkbox"
+									<td><input name="ingredients" type="checkbox"  
 										th:value="${ingredient.id}" /></td>
 									<td><span th:text="${ingredient.name}">INGREDIENT</span><br /></td>
 								</tr>
@@ -39,7 +40,7 @@
 						<div th:each="ingredient : ${protein}">
 							<table>
 								<tr>
-									<td><input name="ingredients" type="checkbox"
+									<td><input name="ingredients" type="checkbox"  
 										th:value="${ingredient.id}" /></td>
 									<td><span th:text="${ingredient.name}">INGREDIENT</span></td>
 								</tr>
@@ -50,7 +51,7 @@
 					<div align="left" class="ingredient-group" id="cheeses">
 						<h3>Choose your cheese:</h3>
 						<div th:each="ingredient : ${cheese}">
-							<input name="ingredients" type="checkbox"
+							<input name="ingredients" type="checkbox" 
 								th:value="${ingredient.id}" /> <span
 								th:text="${ingredient.name}">INGREDIENT</span><br />
 						</div>
@@ -59,7 +60,7 @@
 					<div align="left" class="ingredient-group" id="veggies">
 						<h3>Determine your veggies:</h3>
 						<div th:each="ingredient : ${veggies}">
-							<input name="ingredients" type="checkbox"
+							<input name="ingredients" type="checkbox" 
 								th:value="${ingredient.id}" /> <span
 								th:text="${ingredient.name}">INGREDIENT</span><br />
 						</div>
@@ -68,7 +69,7 @@
 					<div align="left" class="ingredient-group" id="sauces">
 						<h3>Select your sauce:</h3>
 						<div th:each="ingredient : ${sauce}">
-							<input name="ingredients" type="checkbox"
+							<input name="ingredients" type="checkbox"  
 								th:value="${ingredient.id}" /> <span
 								th:text="${ingredient.name}">INGREDIENT</span><br />
 						</div>

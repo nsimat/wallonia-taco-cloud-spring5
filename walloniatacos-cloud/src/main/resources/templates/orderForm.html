@@ -28,39 +28,39 @@
 					<!-- <h3>Deliver my taco masterpieces to...</h3> -->
 					<table>
 						<tr>
-							<td><label for="name">Name: </label></td>
+							<td><label for="deliveryName">Name: </label></td>
 							<td><input class="form-control" type="text"
-								th:field="*{name}"> <span class="validationError"
-								th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
+								th:field="*{deliveryName}"> <span class="validationError"
+								th:if="${#fields.hasErrors('deliveryName')}" th:errors="*{deliveryName}">Name
 									Error</span></td>
 						</tr>
 						<tr>
-							<td><label for="street">Street address: </label></td>
+							<td><label for="deliveryStreet">Street address: </label></td>
 							<td><input class="form-control" type="text"
-								th:field="*{street}" /> <span class="validationError"
-								th:if="${#fields.hasErrors('street')}" th:errors="*{street}">Street
+								th:field="*{deliveryStreet}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('deliveryStreet')}" th:errors="*{deliveryStreett}">Street
 									Error</span></td>
 						</tr>
 						<tr>
-							<td><label for="city">City: </label></td>
+							<td><label for="deliveryCity">City: </label></td>
 							<td><input class="form-control" type="text"
-								th:field="*{city}" /> <span class="validationError"
-								th:if="${#fields.hasErrors('city')}" th:errors="*{city}">City
+								th:field="*{deliveryCity}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('deliveryCity')}" th:errors="*{deliveryCity}">City
 									Error</span></td>
 						</tr>
 						<tr>
-							<td><label for="region">Region: </label></td>
+							<td><label for="deliveryRegion">Region: </label></td>
 							<td><input class="form-control" type="text"
-								th:field="*{region}" /> <span class="validationError"
-								th:if="${#fields.hasErrors('region')}" th:errors="*{region}">Region
+								th:field="*{deliveryRegion}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('deliveryRegion')}" th:errors="*{deliveryRegion}">Region
 									Error</span></td>
 						</tr>
 						<tr>
-							<td><label for="postalCode">Postal code: </label></td>
+							<td><label for="deliveryPostalCode">Postal code: </label></td>
 							<td><input class="form-control" type="text"
-								th:field="*{postalCode}" /> <span class="validationError"
-								th:if="${#fields.hasErrors('postalCode')}"
-								th:errors="*{postalCode}">Postal Code Error</span></td>
+								th:field="*{deliveryPostalCode}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('deliveryPostalCode')}"
+								th:errors="*{deliveryPostalCode}">Postal Code Error</span></td>
 						</tr>
 					</table>
 				</div>
@@ -72,19 +72,19 @@
 					<!-- <h3>Here's how I'll pay...</h3> -->
 					<table>
 						<tr>
-							<td><label for="creditCardNbr">Credit card #: </label></td>
+							<td><label for="creditCardNumber">Credit card #: </label></td>
 							<td><input class="form-control" type="text"
-								th:field="*{creditCardNbr}" /> <span class="validationError"
-								th:if="${#fields.hasErrors('creditCardNbr')}"
-								th:errors="*{creditCardNbr}">Credit Card Number Error
+								th:field="*{creditCardNumber}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('creditCardNumber')}"
+								th:errors="*{creditCardNumber}">Credit Card Number Error
 							</span></td>
 						</tr>
 						<tr>
-							<td><label for="creditCardExp">Expiration: </label></td>
+							<td><label for="creditCardExpiration">Expiration: </label></td>
 							<td><input class="form-control" type="text"
-								th:field="*{creditCardExp}" /> <span class="validationError"
-								th:if="${#fields.hasErrors('creditCardExp')}"
-								th:errors="*{creditCardExp}">Credit Card Expiration Error</span>
+								th:field="*{creditCardExpiration}" /> <span class="validationError"
+								th:if="${#fields.hasErrors('creditCardExpiration')}"
+								th:errors="*{creditCardExpiration}">Credit Card Expiration Error</span>
 							</td>
 						</tr>
 						<tr>
