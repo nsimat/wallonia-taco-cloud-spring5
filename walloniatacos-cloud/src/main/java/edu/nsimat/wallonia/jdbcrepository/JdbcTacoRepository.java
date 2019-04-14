@@ -56,7 +56,7 @@ public class JdbcTacoRepository implements TacoRepository {
 		PreparedStatementCreatorFactory pscf = new PreparedStatementCreatorFactory(
 				"insert into Taco (name, createdAt) values (?,?)", Types.VARCHAR, Types.TIMESTAMP);
 		
-		//By default, returnGeneratedKeys = false so change it to true
+		//By default, returnGeneratedKeys = false so I change it to true
 		pscf.setReturnGeneratedKeys(true);
 		
 		PreparedStatementCreator psc = pscf.newPreparedStatementCreator(

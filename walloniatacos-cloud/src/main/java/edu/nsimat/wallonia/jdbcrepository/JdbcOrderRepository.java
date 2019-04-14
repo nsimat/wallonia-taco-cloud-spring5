@@ -61,10 +61,8 @@ public class JdbcOrderRepository implements OrderRepository {
 		@SuppressWarnings("unchecked")
 		Map<String, Object> values = objectWrapper.convertValue(order, Map.class);
 		values.put("placedAt", order.getPlacedAt());		
-		log.info("Executing saveOrderDetails()...");
 
-		long orderId = orderInserter.executeAndReturnKey(values).longValue();
-		return orderId;
+		return orderInserter.executeAndReturnKey(values).longValue();
 	}
 
 }
