@@ -8,7 +8,8 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import edu.nsimat.wallonia.domain.Ingredient;
-import edu.nsimat.wallonia.jdbcrepository.IngredientRepository;
+import edu.nsimat.wallonia.jparepository.IngredientRepository;
+//import edu.nsimat.wallonia.jdbcrepository.IngredientRepository;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

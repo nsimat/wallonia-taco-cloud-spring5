@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.nsimat.wallonia.domain.Ingredient;
 import edu.nsimat.wallonia.domain.Taco;
-import edu.nsimat.wallonia.jdbcrepository.IngredientRepository;
-import edu.nsimat.wallonia.jdbcrepository.TacoRepository;
+import edu.nsimat.wallonia.jparepository.IngredientRepository;
+import edu.nsimat.wallonia.jparepository.TacoRepository;
+//import edu.nsimat.wallonia.jdbcrepository.IngredientRepository;
+//import edu.nsimat.wallonia.jdbcrepository.TacoRepository;
 import edu.nsimat.wallonia.domain.Ingredient.Type;
 import edu.nsimat.wallonia.domain.Order;
 import lombok.extern.slf4j.Slf4j;

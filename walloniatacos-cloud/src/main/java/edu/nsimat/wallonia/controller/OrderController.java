@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import edu.nsimat.wallonia.domain.Order;
-import edu.nsimat.wallonia.jdbcrepository.OrderRepository;
+import edu.nsimat.wallonia.jparepository.OrderRepository;
+//import edu.nsimat.wallonia.jdbcrepository.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
