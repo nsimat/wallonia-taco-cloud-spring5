@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Wallonia Taco Cloud</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap-lumen.css}" />
+</head>
+<body>
+	<div class="container-fluid" align="center">
+		<h1>Register as a new user</h1>
+		<img th:src="@{/images/TacoCloud.png}">
+	</div>
+
+	<div class="form-group" align="center">
+		<form class="form-inline" method="post" th:action="@{/register}"
+			id="registerForm">
+			<fieldset>
+				<legend>Fill out this form...</legend>
+
+				<div class="form-group" align="center">
+					<table>
+
+						<tr>
+							<td><label for="username">Username: </label></td>
+							<td><input class="form-control" type="text" name="username" /></td>
+						</tr>
+
+						<tr>
+							<td><label for="password">Password: </label></td>
+							<td><input class="form-control" type="password"
+								name="password" /></td>
+						</tr>
+
+						<tr>
+							<td><label for="confirm">Confirm password: </label></td>
+							<td><input class="form-control" type="password"
+								name="confirm" /></td>
+						</tr>
+
+						<tr>
+							<td><label for="fullname">Full name: </label></td>
+							<td><input class="form-control" type="text" name="fullname" /></td>
+						</tr>
+
+						<tr>
+							<td><label for="street">Street: </label></td>
+							<td><input class="form-control" type="text" name="street" /></td>
+						</tr>
+
+						<tr>
+							<td><label for="city">City: </label></td>
+							<td><input class="form-control" type="text" name="city" /></td>
+						</tr>
+
+						<tr>
+							<td><label for="region">Region: </label></td>
+							<td><input class="form-control" type="text" name="region" /></td>
+						</tr>
+
+						<tr>
+							<td><label for="postalcode">Postal Code: </label></td>
+							<td><input class="form-control" type="text"
+								name="postalcode" /></td>
+						</tr>
+
+						<tr>
+							<td><label for="phone">Phone number: </label></td>
+							<td><input class="form-control" type="text" name="phone" /></td>
+						</tr>
+
+						<tr>
+							<td colspan="2" align="center"><input class="btn btn-primary" type="submit"
+								value="Register" /></td>
+						</tr>
+					</table>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package edu.nsimat.wallonia.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.nsimat.wallonia.domain.Ingredient;
 import edu.nsimat.wallonia.domain.Taco;
+import edu.nsimat.wallonia.domain.User;
 import edu.nsimat.wallonia.jparepository.IngredientRepository;
 import edu.nsimat.wallonia.jparepository.TacoRepository;
+import edu.nsimat.wallonia.jparepository.UserRepository;
 //import edu.nsimat.wallonia.jdbcrepository.IngredientRepository;
 //import edu.nsimat.wallonia.jdbcrepository.TacoRepository;
 import edu.nsimat.wallonia.domain.Ingredient.Type;
@@ -36,25 +39,31 @@ public class DesignTacoController {
 
 	private TacoRepository designRepo;
 
+	private UserRepository userRepo;
+
 	@Autowired
-	public DesignTacoController(IngredientRepository ingredientRepo, TacoRepository designRepo) {
+	public DesignTacoController(IngredientRepository ingredientRepo, TacoRepository designRepo,
+			UserRepository userRepo) {
 		this.ingredientRepo = ingredientRepo;
 		this.designRepo = designRepo;
+		this.userRepo = userRepo;
 	}
 
-	@ModelAttribute
+	@ModelAttribute(name = "order")
 	public Order order() {
 		return new Order();
 	}
 
-	@ModelAttribute
+	@ModelAttribute(name = "tacodesign")
 	public Taco taco() {
 		return new Taco();
 	}
 
 	@GetMapping
-	public String showDesignForm(Model model) {
+	public String showDesignForm(Model model, Principal principal) {
 
+		log.info("----- Showing form for taco design -----");
+		
 		List<Ingredient> ingredients = new ArrayList<>();
 		ingredientRepo.findAll().forEach(i -> ingredients.add(i));
 
@@ -64,25 +73,28 @@ public class DesignTacoController {
 			model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
 		}
 		// model.addAttribute("design", new Taco());
-		log.info("We are in the showDesignForm() method.");
+		String username = principal.getName();
+		User user = userRepo.findByUsername(username);
+		model.addAttribute("user", user);
 
 		return "design";
 	}
 
 	@PostMapping
 	public String processDesign(@Valid Taco design, Errors errors, @ModelAttribute Order order) {
+		
+		log.info("----- Processing and saving " + design + "-----");
 
 		if (errors.hasErrors()) {
 			log.debug("Errors happened during design validation!");
 			return "design";
 		}
 
-		// Save the taco design...		
+		// Save the taco design...
 		Taco saved = designRepo.save(design);
 		order().addDesign(saved);
 
 		// logging
-		log.info("Processing design: " + design);
 		log.debug("Size of ingredients is " + design.getIngredients().size());
 
 		return "redirect:/orders/current";

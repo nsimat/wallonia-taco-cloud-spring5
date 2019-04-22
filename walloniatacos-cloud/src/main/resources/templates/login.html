@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Wallonia Taco Cloud</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap-lumen.css}" />
+</head>
+<body>
+	<div align="center">
+		<h1>Login for WalloniaTaco-Cloud's client</h1>
+		<img th:src="@{/images/TacoCloud.png}" alt="WalloniaTaco_Logo" />
+	</div>
+	<div th:if="${error}" align="center">Unable to login. Check your
+		username and password.</div>
+	<div align="center">
+		<p>
+			Are you a new client to our site? Click <a th:href="@{/register}">here</a>
+			to sign up/register.
+		</p>
+
+		<div class="form-group">
+			<form method="post" th:action="@{/login}" id="loginForm">
+				<fieldset>
+					<legend>Already registered? Fill out this form to sign in</legend>
+					<table>
+						<tr>
+							<td><label for="username">Username: </label></td>
+							<td><input class="form-control" type="text" name="username" id="username" /></td>
+						</tr>
+						<tr>
+							<td><label for="password">Password :</label></td>
+							<td><input class="form-control" type="password" name="password" id="password" /></td>
+						</tr>
+					</table>
+					<input class="btn btn-primary" type="submit" value="Login" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

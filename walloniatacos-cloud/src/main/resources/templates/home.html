@@ -4,11 +4,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Wallonia Taco Cloud</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap-lumen.css}" />
 </head>
 <body>
 	<div align="center">
 		<h1>Welcome to...</h1>
 		<img alt="WalloniaTaco_logo" th:src="@{/images/TacoCloud.png}" />
+
+		<div class="form-group">
+			<form method="post" th:action="@{/logout}" id="logoutForm">
+				<input class="btn btn-primary" type="submit" value="Logout" /> <span> or <a
+					th:href="@{/design}">Design a taco</a></span>
+			</form>
+		</div>
+
 	</div>
 </body>
 </html>

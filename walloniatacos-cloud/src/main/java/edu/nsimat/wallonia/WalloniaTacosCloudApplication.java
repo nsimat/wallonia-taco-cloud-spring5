@@ -17,9 +17,10 @@ public class WalloniaTacosCloudApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context =  SpringApplication.run(WalloniaTacosCloudApplication.class, args);
-		for(String name: context.getBeanDefinitionNames()) {
-			log.info("Bean: " + name);
-		}
+		/*
+		 * for(String name: context.getBeanDefinitionNames()) { log.info("Bean: " +
+		 * name); }
+		 */
 	}
 	
 	@Bean
