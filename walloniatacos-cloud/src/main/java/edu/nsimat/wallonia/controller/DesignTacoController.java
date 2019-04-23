@@ -62,7 +62,7 @@ public class DesignTacoController {
 	@GetMapping
 	public String showDesignForm(Model model, Principal principal) {
 
-		log.info("----- Showing form for taco design -----");
+		log.info("-----Showing checkboxes for taco design-----");
 		
 		List<Ingredient> ingredients = new ArrayList<>();
 		ingredientRepo.findAll().forEach(i -> ingredients.add(i));
@@ -83,10 +83,10 @@ public class DesignTacoController {
 	@PostMapping
 	public String processDesign(@Valid Taco design, Errors errors, @ModelAttribute Order order) {
 		
-		log.info("----- Processing and saving " + design + "-----");
+		log.info("-----Processing and saving: " + design + "-----");
 
 		if (errors.hasErrors()) {
-			log.debug("Errors happened during design validation!");
+			log.debug("-----Errors happened during design validation!-----");
 			return "design";
 		}
 
@@ -95,7 +95,7 @@ public class DesignTacoController {
 		order().addDesign(saved);
 
 		// logging
-		log.debug("Size of ingredients is " + design.getIngredients().size());
+		log.debug("-----Size of ingredients is: " + design.getIngredients().size() + "-----");
 
 		return "redirect:/orders/current";
 	}

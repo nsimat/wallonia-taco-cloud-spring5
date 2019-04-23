@@ -37,7 +37,7 @@ public class OrderController {
 	@GetMapping("/current")
 	public String orderForm(@AuthenticationPrincipal User user, @ModelAttribute Order order) {
 		
-		log.info("-----Displaying form for " + user + "-----");
+		log.info("-----Displaying form for: " + user + "-----");
 		
 		if(order.getDeliveryName() == null)
 			order.setDeliveryName(user.getFullname());
@@ -62,7 +62,7 @@ public class OrderController {
 	public String processOrder(@Valid Order order, Errors errors, SessionStatus sessionStatus,
 			@AuthenticationPrincipal User user) {
 
-		log.info("-----Processing and saving " + order + "-----");
+		log.info("-----Processing and saving: " + order + "-----");
 
 		if (errors.hasErrors()) {
 			return "orderForm";
