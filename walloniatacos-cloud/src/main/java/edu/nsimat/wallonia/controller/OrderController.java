@@ -1,9 +1,9 @@
 package edu.nsimat.wallonia.controller;
 
-import java.security.Principal;
-
 import javax.validation.Valid;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import edu.nsimat.wallonia.domain.Order;
 import edu.nsimat.wallonia.domain.User;
 import edu.nsimat.wallonia.jparepository.OrderRepository;
-import edu.nsimat.wallonia.jparepository.UserRepository;
 //import edu.nsimat.wallonia.jdbcrepository.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,9 +28,12 @@ import lombok.extern.slf4j.Slf4j;
 public class OrderController {
 
 	private OrderRepository orderRepo;
+	
+	private OrderPros props;	
 
-	public OrderController(OrderRepository orderRepo) {
+	public OrderController(OrderRepository orderRepo, OrderPros props) {
 		this.orderRepo = orderRepo;
+		this.props = props;
 	}
 
 	@GetMapping("/current")
@@ -77,5 +79,14 @@ public class OrderController {
 
 		log.info("Order submitted: " + order);
 		return "redirect:/";
+	}
+	
+	@GetMapping
+	public String ordersForUser(@AuthenticationPrincipal User user, Model model) {
+		
+	    Pageable pageable = PageRequest.of(0, props.getPageSize());
+		model.addAttribute("orders", orderRepo.findByUserOrderByPlacedAtDesc(user, pageable));
+		
+		return "orderList";
 	}
 }
